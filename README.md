@@ -93,10 +93,9 @@ user habit; installing it is equivalent to installing the base package.
 ### Distribution packages
 
 ```bash
-yay -S xxeripper                                    # Arch AUR — release
-yay -S xxeripper-git                                # Arch AUR — latest git
-sudo dpkg -i xxeripper_1.0.0_amd64.deb              # Debian / Ubuntu
-sudo dnf install xxeripper-1.0.0-1.noarch.rpm       # Fedora / RHEL
+sudo pacman -U xxeripper-1.0.0-1-any.pkg.tar.zst    # Arch
+sudo dpkg -i xxeripper_1.0.0-1_all.deb              # Debian / Ubuntu
+sudo dnf install xxeripper-1.0.0-1.fc44.noarch.rpm  # Fedora / RHEL
 ```
 
 ### From source
