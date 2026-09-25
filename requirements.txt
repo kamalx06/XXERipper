@@ -1,0 +1,6 @@
+# Core runtime dependencies
+httpx[http2]>=0.27,<0.29
+flask>=3.0,<4.0
+
+# Optional: SOCKS proxy support (for Tor via socks5h://)
+# PySocks>=1.7.1

@@ -1,0 +1,60 @@
+# Maintainer: Kamal Khalilov <kamalx06github@gmail.com>
+# Contributor: Kamal Khalilov <kamalx06github@gmail.com>
+
+pkgname=xxeripper
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Black-box XXE scanner with HTTP/2, chain detection, and extraction"
+arch=('any')
+url="https://github.com/kamalx06/XXERipper"
+license=('GPL-3.0-or-later')
+depends=(
+    'python'
+    'python-httpx'
+    'python-h2'
+    'python-flask'
+)
+optdepends=(
+    'python-pysocks: SOCKS proxy support (--proxy socks5://...)'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-hatchling'
+)
+checkdepends=(
+    'python-pytest'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/XXERipper-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/XXERipper-$pkgver"
+    # Uncomment once tests exist under tests/
+    # python -m pytest -v
+    :
+}
+
+package() {
+    cd "$srcdir/XXERipper-$pkgver"
+
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    install -Dm644 packaging/xxeripper.desktop \
+        "$pkgdir/usr/share/applications/xxeripper.desktop"
+    install -Dm644 packaging/xxeripper.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/xxeripper.png"
+    install -Dm644 packaging/xxeripper.appdata.xml \
+        "$pkgdir/usr/share/metainfo/xxeripper.appdata.xml"
+
+    install -Dm644 README.md    "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+    install -Dm644 SECURITY.md  "$pkgdir/usr/share/doc/$pkgname/SECURITY.md"
+}

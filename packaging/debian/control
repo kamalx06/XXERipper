@@ -1,0 +1,53 @@
+Source: xxeripper
+Section: utils
+Priority: optional
+Maintainer: Kamal Khalilov <kamalx06github@gmail.com>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               pybuild-plugin-pyproject,
+               python3-all,
+               python3-hatchling,
+               python3-httpx,
+               python3-h2,
+               python3-flask
+Standards-Version: 4.7.0
+Vcs-Git: https://github.com/kamalx06/XXERipper.git
+Vcs-Browser: https://github.com/kamalx06/XXERipper
+Homepage: https://github.com/kamalx06/XXERipper
+Rules-Requires-Root: no
+
+Package: xxeripper
+Architecture: all
+Depends: ${python3:Depends},
+         ${misc:Depends},
+         python3-httpx,
+         python3-h2,
+         python3-flask
+Recommends: python3-pysocks
+Description: Advanced XXE scanner with manual OOB confirmation
+ XXERipper is a standalone black-box XXE scanner that combines
+ in-band, error-based, and blind OOB detection techniques.
+ .
+ Features:
+  - 30+ attack technique families across six classes
+  - Manual and Automatic OOB confirmation via interactsh-client with
+    per-technique callback labels
+  - Statistical baseline with IQR + entropy analysis
+  - Differential parser fingerprinting across 11 XML stacks
+  - Multi-indicator file and cloud metadata fingerprinting
+  - Universal extraction: file content, credentials, and
+    paste-ready exploit snippets
+  - Multi-stage exploit chain detection (XXE -> SSRF -> cloud
+    metadata -> IAM credentials, XXE -> K8s secrets, etc.)
+  - HTTP/2 negotiation via ALPN with HTTP/1.1 fallback
+  - Content-Type matrix, HTTP method variation, and
+    query-parameter injection
+  - XSLT-in-Office detection (DOCX/XLSX xml-stylesheet PI)
+  - YAML deserialization detection (CWE-502)
+  - Per-phase exception isolation
+  - CWE-mapped findings (CWE-611, CWE-200, CWE-918, CWE-78,
+    CWE-776, CWE-502)
+  - SARIF v2.1.0 output for CI/CD integration
+  - Exit-code gating via --fail-on for pipeline use
+  - Custom payload injection with placeholder substitution
+  - Burp request ingestion with automatic cookie extraction

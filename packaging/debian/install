@@ -1,0 +1,3 @@
+packaging/xxeripper.desktop /usr/share/applications/
+packaging/xxeripper.png     /usr/share/icons/hicolor/256x256/apps/
+packaging/xxeripper.appdata.xml /usr/share/metainfo/

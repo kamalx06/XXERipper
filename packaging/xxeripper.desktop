@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=XXERipper
+GenericName=XXE Scanner
+Comment=Advanced XXE scanner
+Exec=xxeripper
+Icon=xxeripper
+Terminal=true
+Categories=Utility;Security;
+Keywords=security;scanner;xxe;xml;pentest;bugbounty;oob;interactsh;
+StartupNotify=false

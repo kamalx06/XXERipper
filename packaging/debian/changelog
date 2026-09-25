@@ -1,0 +1,39 @@
+xxeripper (1.0.0-1) unstable; urgency=medium
+
+  * Initial release.
+  * XXERipper is a standalone black-box XXE scanner covering 20+ attack
+    technique families across six classes: in-band, error-based, blind
+    out-of-band, encoding-bypass, alternative-sink, and extended-fetcher.
+  * Transport layer: HTTP/2 via ALPN with automatic fallback to HTTP/1.1,
+    built on httpx. Optional SOCKS proxy support when PySocks is
+    installed (--proxy socks5h://...).
+  * Detection engine: differential parser fingerprinting across 11 XML
+    stacks (libxml2, Xerces, System.Xml, JAXP SAX, JAXP StAX, expat,
+    PHP libxml, REXML, Node.js parsers, Perl XML::LibXML, Go encoding/xml),
+    statistical baselining with IQR and Shannon entropy, and multi-
+    indicator file and cloud-metadata fingerprinting.
+  * Out-of-band confirmation: manual mode against a user-supplied
+    interactsh session domain; --oob-auto spawns interactsh-client when
+    present in PATH. interactsh-client is optional but required for OOB
+    phases. Install from https://github.com/projectdiscovery/interactsh.
+  * Extraction: universal file-content and credential extraction with
+    paste-ready shell snippets for AWS IAM keys, SSH private keys, and
+    GCP service-account JSON.
+  * Exploit chain detection examples: multi-stage chain rollup findings such as
+    XXE -> SSRF -> cloud metadata -> IAM credentials, XXE -> Kubernetes
+    secrets API, and XXE -> SSH key -> lateral movement.
+  * Delivery vectors: Content-Type matrix, HTTP method variation,
+    query-parameter injection, 15 WAF-bypass encoders, XSLT-in-Office
+    (DOCX/XLSX xml-stylesheet PI), and YAML deserialization (CWE-502).
+  * Output formats: JSON, SARIF v2.1.0 for CI/CD pipelines, and a
+    self-contained HTML report. Findings are CWE-mapped (611, 200, 918,
+    78, 776, 502) and include confidence and exploitability fields.
+  * Per-phase exception isolation ensures a crash in one technique family
+    does not lose findings from previously completed phases.
+  * Rate limiting, exponential retry/backoff, and a wall-clock scan
+    budget to avoid accidental DoS on fragile targets.
+  * XXERipper is a standalone black-box XXE scanner covering 20+ attack
+    technique families across six classes. Bug reports and feature
+    requests: https://github.com/kamalx06/XXERipper/issues
+
+ -- Kamal Khalilov <kamalx06github@gmail.com>  Fri, 25 Sep 2026 12:00:00 +0000

@@ -1,0 +1,103 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+# ---------------------------------------------------------------------------
+# Project metadata
+# ---------------------------------------------------------------------------
+[project]
+name = "xxeripper"
+version = "1.0.0"
+description = "Advanced XXE scanner with manual out-of-band confirmation, statistical baselining, CWE mapping, and SARIF output"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GPL-3.0-or-later" }
+authors = [
+    { name = "Kamal Khalilov", email = "kamalx06github@gmail.com" },
+]
+maintainers = [
+    { name = "Kamal Khalilov", email = "kamalx06github@gmail.com" },
+]
+keywords = [
+    "security",
+    "xxe",
+    "xml-external-entity",
+    "penetration-testing",
+    "appsec",
+    "scanner",
+    "bug-bounty",
+    "oob",
+    "interactsh",
+    "cwe",
+    "sarif",
+    "ci",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+dependencies = [
+    "httpx[http2]>=0.27,<0.29",
+    "flask>=3.0,<4.0",
+]
+
+# ---------------------------------------------------------------------------
+# Optional dependency groups
+# ---------------------------------------------------------------------------
+[project.optional-dependencies]
+socks = ["PySocks>=1.7.1"]
+# HTTP/2 support is required, not optional — it lives in the main
+# dependencies list above as `httpx[http2]`. This block exists so that
+# `pip install 'xxeripper[http2]'` also works, matching user habit.
+http2 = ["httpx[http2]>=0.27,<0.29"]
+
+# ---------------------------------------------------------------------------
+# Entry point — exposes `xxeripper` on the CLI
+# ---------------------------------------------------------------------------
+[project.scripts]
+xxeripper = "xxeripper:main"
+
+# ---------------------------------------------------------------------------
+# URLs
+# ---------------------------------------------------------------------------
+[project.urls]
+Homepage = "https://github.com/kamalx06/XXERipper"
+Documentation = "https://github.com/kamalx06/XXERipper#readme"
+Repository = "https://github.com/kamalx06/XXERipper"
+Changelog = "https://github.com/kamalx06/XXERipper/blob/main/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/kamalx06/XXERipper/issues"
+"Security Policy" = "https://github.com/kamalx06/XXERipper/blob/main/SECURITY.md"
+
+# ---------------------------------------------------------------------------
+# Hatch build config — FLAT LAYOUT
+# The wheel ships xxeripper.py and nothing else.
+# ---------------------------------------------------------------------------
+[tool.hatch.build.targets.wheel]
+only-include = ["xxeripper.py"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/xxeripper.py",
+    "/README.md",
+    "/LICENSE",
+    "/CHANGELOG.md",
+    "/SECURITY.md",
+    "/pyproject.toml",
+    "/requirements.txt",
+    "/packaging",
+    "/scripts",
+]

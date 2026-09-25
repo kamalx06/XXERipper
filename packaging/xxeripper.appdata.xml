@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>com.github.kamalx06.XXERipper</id>
+  <name>XXERipper</name>
+  <summary>Advanced XXE scanner</summary>
+  <description>
+    <p>
+      XXERipper is a standalone black-box XXE scanner that combines
+      in-band, error-based, and blind out-of-band detection techniques
+      with statistical baselining, differential parser fingerprinting,
+      and manual out-of-band confirmation via interactsh-client.
+    </p>
+    <p>
+      Every finding is mapped to one or more CWE identifiers, and the
+      scanner can emit SARIF v2.1.0 for CI/CD integration with GitHub
+      code scanning, GitLab SAST, and Azure DevOps.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>30+ attack technique families across six classes</li>
+      <li>Manual and Automatic OOB confirmation with per-technique callback labels</li>
+      <li>Statistical baseline with IQR + entropy analysis</li>
+      <li>Differential parser fingerprinting across 11 XML stacks</li>
+      <li>Multi-indicator file and cloud metadata fingerprinting</li>
+      <li>Content-Type, HTTP method, and query-parameter delivery vectors</li>
+      <li>Per-phase exception isolation for stability on flaky targets</li>
+      <li>CWE-mapped findings (CWE-611, CWE-200, CWE-918, CWE-78, CWE-776)</li>
+      <li>SARIF v2.1.0 output and CI exit-code gating</li>
+      <li>Custom payload injection with placeholder substitution</li>
+      <li>Burp request ingestion with automatic cookie extraction</li>
+      <li>HTTP/2 negotiation with HTTP/1.1 fallback</li>
+      <li>Universal extraction with paste-ready credential snippets</li>
+      <li>Multi-stage exploit chain rollup detection</li>
+      <li>XSLT-in-Office and YAML deserialization probes</li>
+    </ul>
+  </description>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <url type="homepage">https://github.com/kamalx06/XXERipper</url>
+  <url type="bugtracker">https://github.com/kamalx06/XXERipper/issues</url>
+  <launchable type="desktop-id">xxeripper.desktop</launchable>
+  <releases>
+    <release version="1.0.0" date="2026-09-25">
+      <description>
+        <p>Initial release.</p>
+        <ul>
+          <li>30+ attack technique families across six classes</li>
+          <li>Manual and Automatic OOB confirmation via interactsh-client with
+              per-technique callback labels</li>
+          <li>Statistical baselining with IQR + entropy and a
+              zero-IQR timing fallback</li>
+          <li>Differential parser fingerprinting across 11 XML stacks</li>
+          <li>Multi-indicator file and cloud metadata fingerprinting</li>
+          <li>Universal extraction: file content, credentials, and
+              paste-ready exploit snippets</li>
+          <li>Multi-stage exploit chain detection with rollup findings</li>
+          <li>HTTP/2 transport via ALPN with HTTP/1.1 fallback</li>
+          <li>XSLT-in-Office detection (DOCX/XLSX xml-stylesheet PI)</li>
+          <li>YAML deserialization detection (CWE-502)</li>
+          <li>Kubernetes, GCP, and Azure credential-extraction chains</li>
+          <li>Content-Type matrix, HTTP method variation, and
+              query-parameter injection</li>
+          <li>Per-phase exception isolation</li>
+          <li>CWE-mapped findings for compliance and downstream tooling</li>
+          <li>SARIF v2.1.0 output for CI/CD integration</li>
+          <li>Exit-code gating via --fail-on for pipeline use</li>
+          <li>Custom payloads, Burp request ingestion, JSON and HTML
+              output</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>
